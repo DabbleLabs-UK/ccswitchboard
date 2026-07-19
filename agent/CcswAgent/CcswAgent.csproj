@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <!-- WinExe + UseWindowsForms: agent now lives in the tray (NotifyIcon),
+         no console window of its own. -->
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="agent.config.example.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="agent.config.json" CopyToOutputDirectory="PreserveNewest" Condition="Exists('agent.config.json')" />
+    <None Include="tray-icon.png" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+</Project>

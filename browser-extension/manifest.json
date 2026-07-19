@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "CCswitchboard",
+  "version": "0.8.4",
+  "description": "E3: reads Claude's assistant messages on claude.ai, dispatches ```ccsw fenced JSON blocks as relay jobs, and wakes the conversation with the result once a job finishes.",
+  "permissions": ["storage", "declarativeNetRequest", "notifications", "scripting", "cookies"],
+  "host_permissions": ["https://claude.ai/*", "https://dabblelabs.uk/*", "https://relay.z4ps.uk/*"],
+  "icons": {
+    "128": "icon128.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["logo-32.png"],
+      "matches": ["https://claude.ai/*"]
+    }
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://claude.ai/*"],
+      "js": ["better-voices.web.js", "content.js"],
+      "css": ["content.css"],
+      "run_at": "document_idle"
+    }
+  ]
+}

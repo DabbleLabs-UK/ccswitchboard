@@ -1,0 +1,24 @@
+{
+  "machine": "vm",
+  "_comment_relays": "Ordered relay list, HIGHEST PRIORITY FIRST. Index 0 is the primary: the agent polls it by default, and whenever it has failed over to a lower-priority relay it probes the primary every ~60s and returns to it after 2 consecutive OKs. Failover trips after 3 consecutive request failures (network error, timeout, 5xx -- a 401 or 404 is NOT a failover signal). Tokens are PER RELAY: each relay is a separate deployment with its own auth.config.php, so one token is never valid on both. An entry whose token is empty is SKIPPED entirely (logged once at startup, not retried) -- fill it in to bring that relay into rotation. A job always streams its output and posts its result back to the relay it was polled FROM, even if the active relay changes mid-job, because the job row only exists there.",
+  "relays": [
+    {
+      "base": "https://dabblelabs.uk/ccswitchboard/board",
+      "token": "PRIMARY-RELAY-TOKEN-HERE"
+    },
+    {
+      "base": "https://relay.z4ps.uk",
+      "token": "RESERVE-RELAY-TOKEN-HERE"
+    }
+  ],
+  "_comment_relayBase": "LEGACY single-relay config, kept for backcompat: used ONLY when 'relays' above is absent or empty, in which case relayBase + token become a one-element relay list with nothing to fail over to (exactly the pre-multi-relay behaviour). Prefer 'relays'.",
+  "relayBase": null,
+  "workerCount": 4,
+  "bashPath": "C:\\Program Files\\Git\\bin\\bash.exe",
+  "_comment_mcpConfigPath": "Optional. Full path to a --mcp-config JSON file (see mcp-config.example.json) giving headless jobs MCP connectors. Omit or leave unset for no MCP, same as before this field existed.",
+  "mcpConfigPath": null,
+  "_comment_claudeExePath": "Optional. Full path to the real claude.exe (not claude.cmd). Auto-resolved from PATH by default (finds claude.cmd, then its sibling node_modules\\@anthropic-ai\\claude-code\\bin\\claude.exe) -- only set this if that auto-resolution fails on this box.",
+  "claudeExePath": null,
+  "_comment_token": "LEGACY shared relay auth token (X-CCSW-Token header), paired with relayBase above. Ignored when 'relays' is used -- put each relay's token in its own entry there instead. Get each token from that relay's private auth.config.php.",
+  "token": ""
+}

@@ -1,0 +1,8 @@
+# The agent zip lives in the web root only because deploy's FTPS mirror can
+# only ship there -- it is NOT meant to be fetchable directly. download.php
+# (auth'd) is the only sanctioned way in; this denies the bare URL so the
+# binaries aren't world-readable at a guessable path.
+#
+# Apache 2.4 / LiteSpeed syntax. php -S ignores .htaccess, so local dev serves
+# the directory openly -- prod is what this protects.
+Require all denied

@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/agent/">
+    <Project Path="agent/CcswAgent/CcswAgent.csproj" />
+  </Folder>
+  <Folder Name="/popup/">
+    <Project Path="popup/CcswPopup/CcswPopup.csproj" />
+  </Folder>
+</Solution>

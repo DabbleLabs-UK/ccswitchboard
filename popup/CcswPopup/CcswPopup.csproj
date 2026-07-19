@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <!-- WinExe: shows WPF popup windows and a WinForms tray NotifyIcon, no
+         console subsystem. -->
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>CcswPopup</RootNamespace>
+    <AssemblyName>CcswPopup</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="popup.config.example.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="popup.config.json" CopyToOutputDirectory="PreserveNewest" Condition="Exists('popup.config.json')" />
+    <None Include="tray-icon.png" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- UseWindowsForms implicitly globals these, which collide with WPF's
+         own Application/MessageBox/Color/Brushes; code opts into WinForms
+         types explicitly instead (see the WinForms alias in Program.cs). -->
+    <Using Remove="System.Windows.Forms" />
+    <Using Remove="System.Drawing" />
+  </ItemGroup>
+
+</Project>

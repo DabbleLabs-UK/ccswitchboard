@@ -1,0 +1,6 @@
+# ccswitchboard M1 relay -- SetEnv points db.php at the SQLite store that
+# lives OUTSIDE the web root (mirrors RedditWatch's private/data convention).
+# php -S ignores .htaccess, so this only takes effect once deployed under
+# LiteSpeed (the prod host runs cPanel + LiteSpeed, which reads .htaccess
+# Apache-compatibly).
+SetEnv CCSW_DB_PATH /home/dabblela/private/ccswitchboard/data/jobs.sqlite

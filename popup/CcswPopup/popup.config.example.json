@@ -1,0 +1,7 @@
+{
+  "relayBase": "https://dabblelabs.uk/ccswitchboard/board",
+  "_logPathComment": "Optional folder for popup.log. Omit to use the default (%LocalAppData%\\CcswPopup\\); also editable from the tray icon's Settings... menu.",
+  "logPath": "",
+  "_tokenComment": "Shared relay auth token (X-CCSW-Token header). Get it from the relay's private auth.config.php. Leave empty while the relay is in grace mode (AUTH_ENFORCE=false); required once auth is enforced.",
+  "token": ""
+}

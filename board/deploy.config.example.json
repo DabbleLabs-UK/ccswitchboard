@@ -1,0 +1,14 @@
+{
+  "_comment": "Copy this file to deploy.config.json (gitignored) and fill in real values. deploy.config.json must NEVER be committed.",
+
+  "_comment_transfer": "FTPS upload channel. remote_path is CHROOT-RELATIVE: the FTPS login lands in /home/dabblela, so /public_html/ccswitchboard/board here means /home/dabblela/public_html/ccswitchboard/board on disk -- the relay lives under a board/ subdir so /ccswitchboard/ itself is free for a future writeup. Only the web files (job.php, poll.php, result.php, db.php, .htaccess, etc) are shipped here -- the SQLite store lives outside the web root at /home/dabblela/private/ccswitchboard/data/jobs.sqlite, created lazily by db.php itself (open_basedir is unrestricted), so there is no second transfer target and nothing to provision over SSH.",
+  "transfer": {
+    "protocol": "ftps",
+    "host": "ftp.dabblelabs.uk",
+    "port": 21,
+    "user": "PUT_FTPS_USER_HERE",
+    "password": "PUT_PASSWORD_HERE",
+    "remote_path": "/public_html/ccswitchboard/board",
+    "tls_fingerprint": "PUT_SHA256_FINGERPRINT_HERE_COLON_SEPARATED"
+  }
+}
